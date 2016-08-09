@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 // QUOTE FUNCTION
-  var website = "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+  var website = "https://crossorigin.me/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
   console.log(website);         // log json quote website
   
   function newQuote() {
