@@ -1,6 +1,6 @@
 body {
   margin: 0 10%;
-  background-color: #2C3E50;
+  background-color: #8F0000;
 }
 #content-box {
   background-color: white;
@@ -9,6 +9,10 @@ body {
   border-radius: 10px;
   max-width: 500px;
 }
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
 blockquote {
   border: none;
   font-family: helvetica;
@@ -16,9 +20,7 @@ blockquote {
   font-size: 24px;
 }
 .btn, .btn:hover {
-  border: none;
-  outline: none;
-  background-color: #2C3E50;
+  background-color: #8F0000;
   color: white;
 }
 .mylink, a, a:hover {

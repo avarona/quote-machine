@@ -5,13 +5,13 @@ $(document).ready(function() {
   console.log(website);         // log json quote website
 
   function newQuote() {
-    var key = "";                   // generate random key for quote
+    var key = "";              // generate random key for quote
     for(var i = 0; i < 6; i++) {
       key += Math.floor(Math.random() * 9);
     }
     website += "&key=" + key.toString();
 
-  // RANDOM COLOR FUNCTION
+    // RANDOM COLOR FUNCTION
     var str = "0123456789ABCDEF";
     var color = "#";
     for(var i = 0; i < 6; i++) {
@@ -20,34 +20,45 @@ $(document).ready(function() {
     console.log(color);           // log random color code
 
     $.getJSON(website, function(val){    // access api and receive response
-      console.log(val);
       quoteText = val.quoteText;
       quoteAuthor = val.quoteAuthor;
-      $("body, button").fadeIn(700).css("background-color", color);
-      $("#quote").fadeIn(700).html('<i class="fa fa-quote-left pull-left"></i>' + val.quoteText).css("color", color);
-      $("footer").fadeIn(700).html(val.quoteAuthor).css("color", color);
+      $("body, button").animate({backgroundColor: color})
+      if(quoteAuthor) {
+        $("#quote").html('<i class="fa fa-quote-left pull-left"></i>' + quoteText).animate({color: color});
+        $("cite").html(quoteAuthor).animate({color: color});
+      } else {
+        $("#quote").html('<i class="fa fa-quote-left pull-left"></i>' + quoteText).animate({color: color});
+        $("cite").html("Unknown").animate({color: color});
+      }
     });
   }
-var quoteText = "";
-var quoteAuthor = "";
+  var quoteText = "";
+  var quoteAuthor = "";
 
-// FIRST QUOTE
-  newQuote();
+// LANDING PAGE
+  $("#quote").html("<h1>Inspirational Quotes</h1>").css("color", "#8F0000");
+  $("#twitter").hide();
 
-// CLICK BUTTON
+// NEW QUOTE BUTTON
   $('#get-quote').click(function() {
-    $("#quote, footer, button").fadeOut(300);
-    newQuote();    // new quote + random color
+    newQuote();       // new quote + random color
+  $("#twitter").delay(200).show(0);
   });
 
-// POST TO TWITTER
+// TWITTER NEW PAGE
   function openURL(url){
     window.open(url, 'Share', 'width=550, height=500, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
   }
+
+// POST TO TWITTER
   $('#twitter').click(function() {
     var hashtag = quoteAuthor;
     var newHash = hashtag.split(" ").join("");
-      openURL("https://twitter.com/intent/tweet?hashtags=quotes," + newHash + "&text=" + encodeURIComponent('"' + quoteText + '"' + quoteAuthor));
+    if(!quoteAuthor) {
+      openURL("https://twitter.com/intent/tweet?hashtags=" + ",quotation&text=" + encodeURIComponent('"' + quoteText + '" '));
+    } else {
+      openURL("https://twitter.com/intent/tweet?hashtags=" + newHash + ",quotation&text=" + encodeURIComponent('"' + quoteText + '"'));
+    }
   });
 
 });
