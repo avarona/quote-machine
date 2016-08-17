@@ -17,7 +17,7 @@ $(document).ready(function() {
     for(var i = 0; i < 6; i++) {
       color += str[Math.floor(Math.random() * 16)];
     }
-    console.log(color);           // log random color code
+    // console.log(color);           // log random color code
 
     $.getJSON(website, function(val){    // access api and receive response
       quoteText = val.quoteText;
@@ -36,7 +36,7 @@ $(document).ready(function() {
   var quoteAuthor = "";
 
 // LANDING PAGE
-  $("#quote").html("<h1>Inspirational Quotes</h1>").css("color", "#8F0000");
+  $("#quote").html("<h1>Inspiration Quotes</h1>").css("color", "#8F0000");
   $("#twitter").hide();
 
 // NEW QUOTE BUTTON
