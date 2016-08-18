@@ -11,9 +11,8 @@ $(document).ready(function() {
 
 // QUOTE FUNCTION
   var quoteText, quoteAuthor;
-  var website = "https://crossorigin.me/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
-  // console.log(website);
   function newQuote() {
+    var website = "https://crossorigin.me/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
     var key = "";              // generate random key for quote
     for(var i = 0; i < 6; i++) {
       key += Math.floor(Math.random() * 9);
@@ -27,6 +26,7 @@ $(document).ready(function() {
       color += str[Math.floor(Math.random() * 10)];
     }
     // console.log(color);
+
     $.getJSON(website, function(val){    // quote API
       quoteText = val.quoteText.trim();
       quoteAuthor = val.quoteAuthor.trim();
@@ -41,8 +41,8 @@ $(document).ready(function() {
         $("cite").html("Unknown").animate({color: color});
       }
       if(tweetLength > 140) {       // disable tweet > 140
-        console.log("tweet greter than 140");
-        $("#twitter").fadeOut("fast");
+        console.log("tweet is greater than 140 characters");
+        $("#twitter").fadeOut();
       }
     });
   }
