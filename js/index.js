@@ -12,7 +12,7 @@ $(document).ready(function() {
 // QUOTE FUNCTION
   var quoteText, quoteAuthor;
   function newQuote() {
-    var website = "https://crossorigin.me/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+    var website = "https://CORS-Anywhere.HerokuApp.com/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
     var key = "";              // generate random key for quote
     for(var i = 0; i < 6; i++) {
       key += Math.floor(Math.random() * 9);
