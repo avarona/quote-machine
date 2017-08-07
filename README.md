@@ -9,6 +9,6 @@ It's a simple app made with HTML, CSS & Jquery.
 ## How to get me
     git clone https://github.com/avarona/quote-machine.git
     cd quote-machine
-    open quote-machine
+    open index.html
 
 >or visit it at: [quote-machine](https://avarona.github.io/quote-machine/)
